@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:fixit/core/service_provider.dart';
-import 'package:get_it/get_it.dart';
+import 'package:get/get.dart';
 
 import '../core/api_client.dart';
 
 class ApiServiceProvider extends ServiceProvider {
   @override
-  Future<void> register(GetIt it) async {
+  Future<void> register() async {
     var baseOptions = BaseOptions(
       connectTimeout: 100 * 1000,
       sendTimeout: 1000 * 1000,
@@ -15,7 +15,7 @@ class ApiServiceProvider extends ServiceProvider {
       baseUrl: 'https://backend-develop.famcare.app/api/v2',
     );
 
-    it.registerLazySingleton(() => Dio(baseOptions));
-    it.registerLazySingleton(() => ApiClient(it()));
+    Get.lazyPut<Dio>(() => Dio(baseOptions), fenix: true);
+    Get.lazyPut<ApiClient>(() => ApiClient(Get.find()), fenix: true);
   }
 }

@@ -1,6 +1,5 @@
-import 'package:get_it/get_it.dart';
-
 abstract class ServiceProvider {
-  Future<void> register(GetIt it);
+  Future<void> register();
+
   T? responseConvert<T>(Map<String, dynamic> json) => null;
 }

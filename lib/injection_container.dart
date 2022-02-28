@@ -7,9 +7,7 @@ final sl = GetIt.instance;
 App appBloc = App();
 
 Future<void> init() async {
-  sl.allowReassignment = true;
-
   for (var provider in providers) {
-    await provider.register(sl);
+    await provider.register();
   }
 }

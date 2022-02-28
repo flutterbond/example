@@ -11,7 +11,7 @@ dependencies:
   equatable: ^2.0.3
   json_annotation: ^4.4.0
   sign_in_with_apple: ^3.3.0
-  google_sign_in: ^5.2.3
+  google_sign_in: ^5.2.4
   shared_preferences: ^2.0.13
   dio: ^4.0.4
   device_info: ^2.0.3
@@ -20,26 +20,26 @@ dependencies:
   flutter_bloc: ^8.0.1
   get_it: ^7.2.0
   sms_autofill: ^2.2.0
-  auto_route: ^3.2.2
+  auto_route: ^3.2.4
   flutter_svg: ^1.0.3
   intl: ^0.17.0
-  package_info_plus: ^1.3.0
+  package_info_plus: ^1.4.0
   flutter_config: ^2.0.0
-  cupertino_icons: ^1.0.2
-  bloc_test: ^9.0.2
-  mockito: ^5.0.17
-  faker: ^2.0.0
+  cupertino_icons: ^1.0.4
+  get: ^4.6.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^1.0.4
   build_runner: ^2.1.7
   json_serializable: ^6.1.4
-  auto_route_generator: ^3.2.1
+  auto_route_generator: ^3.2.3
+  mockito: ^5.1.0
+  faker: ^2.0.0
+  bloc_test: ^9.0.2
 
 flutter:
-
   uses-material-design: true
 
   assets:

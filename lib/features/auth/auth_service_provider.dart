@@ -1,6 +1,5 @@
 import 'package:fixit/core/service_provider.dart';
-import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get/get.dart';
 
 import 'data/datasources/auth_local_data_source.dart';
 import 'data/datasources/auth_remote_data_source.dart';
@@ -22,28 +21,27 @@ import 'presentation/social_account_login/google_account_login/google_account_lo
 
 class AuthServiceProvider extends ServiceProvider {
   @override
-  Future<void> register(GetIt it) async {
-    final sharedPreferences = await SharedPreferences.getInstance();
-    it.registerLazySingleton(() => sharedPreferences);
+  Future<void> register() async {
+    Get.lazyPut(() => AuthRemoteDataSource(Get.find()), fenix: true);
+    Get.lazyPut(() => AuthLocalDataSource(Get.find()), fenix: true);
 
-    it.registerFactory(() => AuthRemoteDataSource(it.get()));
-    it.registerFactory(() => AuthLocalDataSource(it.get()));
+    Get.lazyPut(() => AuthRepository(Get.find(), Get.find()), fenix: true);
 
-    it.registerLazySingleton(() => AuthRepository(it.get(), it.get()));
+    Get.lazyPut(() => GoogleAccountLoginService(), fenix: true);
+    Get.lazyPut(() => AppleIdLoginService(), fenix: true);
 
-    it.registerFactory(() => GoogleAccountLoginService());
-    it.registerFactory(() => AppleIdLoginService());
+    Get.lazyPut(() => RegisterCubit(Get.find()), fenix: true);
+    Get.lazyPut(() => CompleteRegistrationCubit(Get.find()), fenix: true);
+    Get.lazyPut(() => LoginCubit(Get.find()), fenix: true);
+    Get.lazyPut(() => GoogleAccountLoginCubit(Get.find(), Get.find()),
+        fenix: true);
+    Get.lazyPut(() => AppleIdLoginCubit(Get.find(), Get.find()), fenix: true);
+    Get.lazyPut(() => ForgetPasswordCubit(Get.find()), fenix: true);
+    Get.lazyPut(() => ActivationCubit(Get.find()), fenix: true);
+    Get.lazyPut(() => ActivationCubit(Get.find()), fenix: true);
+    Get.lazyPut(() => ResetPasswordCubit(Get.find()), fenix: true);
 
-    it.registerFactory(() => RegisterCubit(it.get()));
-    it.registerFactory(() => CompleteRegistrationCubit(it.get()));
-    it.registerFactory(() => LoginCubit(it.get()));
-    it.registerFactory(() => GoogleAccountLoginCubit(it.get(), it.get()));
-    it.registerFactory(() => AppleIdLoginCubit(it.get(), it.get()));
-    it.registerFactory(() => ForgetPasswordCubit(it.get()));
-    it.registerFactory(() => ActivationCubit(it.get()));
-    it.registerFactory(() => ResetPasswordCubit(it.get()));
-
-    it.registerFactory(() => AuthBloc(it.get()));
+    Get.lazyPut(() => AuthBloc(Get.find()), fenix: true);
   }
 
   @override
