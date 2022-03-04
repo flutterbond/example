@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
+import 'package:fixit/core/auth/auth.dart';
 import 'package:fixit/core/errors/exceptions.dart';
 import 'package:fixit/core/errors/failures.dart';
 import 'package:fixit/core/extension.dart';
@@ -31,6 +32,7 @@ class AuthRepository {
   ) async {
     try {
       final response = await remoteDataSource.login(number, password);
+      Auth.attempt(response.data);
       await setUser(response);
       return Right(response);
     } on ServerException catch (e) {

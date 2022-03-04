@@ -1,1 +1,2 @@
-abstract class Authenticable {}
+abstract class Authenticable {
+}
